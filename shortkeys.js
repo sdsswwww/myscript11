@@ -10,7 +10,7 @@
 // @match       https://www.qidian.com/*
 // @match       https://learn.microsoft.com/*
 // @grant       none
-// @version     1.2
+// @version     1.3
 // @author      -
 // @description 6/12/2025, 1:02:12 AM
 // @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/shortkeys.js
@@ -36,15 +36,7 @@ function getLinks(texts) {
     };
     const visible = r.filter(isVisible);
     if (visible.length > 0) return visible[0];
-    // if (r.length > 0) {
-    //     console.log("Found exact match: " + r.map(a => a.textContent.trim()).join(", "));
-    //     return r;
-    // }
-    // const r1 = Array.from(document.querySelectorAll('button, a, span')).filter(a => texts.some(text => a.textContent.includes(text)));
-    // if (r1.length > 0) {
-    //     console.log("Found partial match: " + r1.map(a => a.textContent.trim()).join(", "));
-    //     return r1;
-    // }
+    if (r.length > 0) return r[0]; // Return the first match if no visible elements found
     return null;
 }
 
