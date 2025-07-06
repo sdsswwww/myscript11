@@ -47,7 +47,7 @@ function getLinks(texts) {
 }
 
 
-keyconfig = {
+const keyconfig = {
     "next": "d",
     "previous": "a",
     "Scrolldown": "s",
@@ -61,10 +61,10 @@ keyconfig = {
     "goback": "x",
     "goforward": "c",
 }
-bookmarkTexts = ["书签", "书籤","書籤", "把最后一章加入书签", "把最后一章加入书籤", "把最后一章加入書籤", "收藏", "加入书签", "添加书签"];
-previousChapterTexts = ["上一章", "上一页", "Previous"];
-nextChapterTexts = ["下一章", "下一页", "Next"];
-bookshelfTexts = ["书架", "我的书架", "我的收藏", "我的书签", "书签列表", "书架列表", "Check Your Answer", "Check your answers"];
+const bookmarkTexts = ["书签", "书籤","書籤", "把最后一章加入书签", "把最后一章加入书籤", "把最后一章加入書籤", "收藏", "加入书签", "添加书签"];
+const previousChapterTexts = ["上一章", "上一页", "Previous"];
+const nextChapterTexts = ["下一章", "下一页", "Next"];
+const bookshelfTexts = ["书架", "我的书架", "我的收藏", "我的书签", "书签列表", "书架列表", "Check Your Answer", "Check your answers"];
 
 
 // when user press keys,  do the actions,
