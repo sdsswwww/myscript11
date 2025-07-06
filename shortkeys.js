@@ -5,11 +5,12 @@
 // @match       https://69shuba.*/*
 // @match       https://69shuba.cx/*
 // @match       https://www.69shuba.*/*
+// @match        https://www.69shuba.com/*
 // @match       https://twkan.com/*
 // @match       https://www.qidian.com/*
 // @match       https://learn.microsoft.com/*
 // @grant       none
-// @version     1.1
+// @version     1.2
 // @author      -
 // @description 6/12/2025, 1:02:12 AM
 // @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/shortkeys.js
