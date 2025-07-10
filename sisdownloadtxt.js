@@ -8,6 +8,7 @@
 // @version     1.0
 // @author      -
 // @description 2/1/2025, 3:49:41 PM
+// @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/sisdownloadtxt.js
 // ==/UserScript==
 
 
