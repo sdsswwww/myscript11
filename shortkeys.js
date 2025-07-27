@@ -9,8 +9,9 @@
 // @match       https://twkan.com/*
 // @match       https://www.qidian.com/*
 // @match       https://learn.microsoft.com/*
+// @match       https://cn.wa01.com/*
 // @grant       none
-// @version     1.3
+// @version     1.4
 // @author      -
 // @description 6/12/2025, 1:02:12 AM
 // @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/shortkeys.js
