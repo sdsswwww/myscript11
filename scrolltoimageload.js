@@ -1,7 +1,6 @@
 // ==UserScript==
 // @name         Scroll to first image load
 // @namespace    http://tampermonkey.net/
-// @version      2025-07-28
 // @description  try to take over the world!
 // @author       You
 // @match        https://laowang.vip/*
@@ -13,7 +12,7 @@
 
 (function() {
     'use strict';
-    
+
     // Your code here...
     // <div style="width: 600px; height: 100px;background: url(static/image/common//loading.gif) no-repeat center center;"></div>
     document.addEventListener('keydown', function(e) {
