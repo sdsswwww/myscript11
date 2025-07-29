@@ -6,7 +6,7 @@
 // @match        https://laowang.vip/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=laowang.vip
 // @updateURL    https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/scrolltoimageload.js
-// @version      1.3
+// @version      1.4
 // @grant        none
 // ==/UserScript==
 
@@ -42,6 +42,20 @@
             const paragraphs = document.querySelectorAll('p.mbn');
             if (paragraphs.length > 0) {
                 paragraphs[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            // <img id="aimg_10386562" aid="10386562" src="/static/image/common/none.gif"
+            // if not found, try to find the first image with src="/static/image/common/none.gif"
+            const noneImages = document.querySelectorAll('img[src="/static/image/common/none.gif"]');
+            if (noneImages.length > 0) {
+                noneImages[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            // <ignore_js_op>
+            // if not found, try to find the first element with <ignore_js_op>
+            const ignoreElements = document.querySelectorAll('ignore_js_op');   
+            if (ignoreElements.length > 0) {
+                ignoreElements[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
     });
