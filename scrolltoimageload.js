@@ -6,7 +6,7 @@
 // @match        https://laowang.vip/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=laowang.vip
 // @updateURL    https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/scrolltoimageload.js
-// @version      1.4
+// @version      1.5
 // @grant        none
 // ==/UserScript==
 
@@ -31,6 +31,16 @@
                     break;
                 }
             }
+
+
+            // <img id="aimg_10386562" aid="10386562" src="/static/image/common/none.gif"
+            // if not found, try to find the first image with src="/static/image/common/none.gif"
+            const noneImages = document.querySelectorAll('img[src="/static/image/common/none.gif"]');
+            if (noneImages.length > 0) {
+                noneImages[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+
             // <img id="aimg_10371811" aid="10371811" src="/remote/data/attachment/forum/202507/28/134514wrko9knk9nmrzknh.png" zoomfile="/remote/data/attachment/forum/202507/28/134514wrko9knk9nmrzknh.png" file="/remote/data/attachment/forum/202507/28/134514wrko9knk9nmrzknh.png" class="zoom" onclick="zoom(this, this.src, 0, 0, 0)" width="600" inpost="1" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" lazyloaded="true" style="" _load="1" initialized="true">
             // if not found, try to find the first image with lazyloaded="true"
             const images = document.querySelectorAll('img[lazyloaded="true"]');
@@ -43,14 +53,6 @@
             if (paragraphs.length > 0) {
                 paragraphs[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
-
-            // <img id="aimg_10386562" aid="10386562" src="/static/image/common/none.gif"
-            // if not found, try to find the first image with src="/static/image/common/none.gif"
-            const noneImages = document.querySelectorAll('img[src="/static/image/common/none.gif"]');
-            if (noneImages.length > 0) {
-                noneImages[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-
             // <ignore_js_op>
             // if not found, try to find the first element with <ignore_js_op>
             const ignoreElements = document.querySelectorAll('ignore_js_op');   
