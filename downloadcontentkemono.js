@@ -2,11 +2,14 @@
 // @name        download image kemono.su
 // @namespace   Violentmonkey Scripts
 // @match       https://kemono.su/*/post/*
+// @match       https://kemono.cr/*/post/*
 // @grant       none
 // @version     1.0
 // @author      -
 // @description 2/7/2024, 2:11:23 AM
 // @require      https://cdn.jsdelivr.net/npm/jszip@3/dist/jszip.min.js
+// @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/downloadcontentkemono.js
+// @downloadURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/downloadcontentkemono.js
 
 // ==/UserScript==
 function convertBlobPngToJpeg(pngBlob) {
