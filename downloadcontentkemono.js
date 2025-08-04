@@ -4,7 +4,7 @@
 // @match       https://kemono.su/*/post/*
 // @match       https://kemono.cr/*/post/*
 // @grant       none
-// @version     1.0
+// @version     1.1
 // @author      -
 // @description 2/7/2024, 2:11:23 AM
 // @require      https://cdn.jsdelivr.net/npm/jszip@3/dist/jszip.min.js
@@ -29,6 +29,33 @@ function convertBlobPngToJpeg(pngBlob) {
         };
         img.src = URL.createObjectURL(pngBlob);
     });
+}
+
+
+// Download it
+function downloadImageFromElement(imgElement, filename) {
+    // Wait for image to load if it hasn't already
+    if (!imgElement.complete) {
+        imgElement.onload = () => downloadImageFromElement(imgElement, filename);
+        return;
+    }
+    
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = imgElement.naturalWidth;
+    canvas.height = imgElement.naturalHeight;
+    ctx.drawImage(imgElement, 0, 0);
+    
+    canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }, 'image/jpeg', 0.95);
 }
 
 
@@ -61,15 +88,45 @@ async function triggerDownload() {
 
 
     const hrefArray = [];
-
+    const smallImageArray = [];
+    const smallHrefArray = [];
     fileThumbs.forEach((fileThumb) => {
         const href = fileThumb.getAttribute('href');
         hrefArray.push(href);
+        
+        const smallImage = fileThumb.querySelector('img');
+        if (smallImage) {
+            smallImageArray.push(smallImage);
+            let h = smallImage.getAttribute('src');
+            if (h.startsWith('//')) {
+                h = 'https:' + h;
+            }
+            smallHrefArray.push(h);
+        }
     });
 
-    fileset = new Set();
-    console.log(hrefArray);
+    console.log('hrefArray', hrefArray.length, hrefArray);
+    console.log('smallHrefArray', smallHrefArray.length, smallHrefArray);
 
+    const smallImageCheckbox = document.getElementById('smallimage');
+    const isSmallImageChecked = smallImageCheckbox ? smallImageCheckbox.checked : false;
+    console.log('Small Image Checkbox Checked:', isSmallImageChecked);
+
+    if (isSmallImageChecked) {
+        console.log('smallImageArray', smallImageArray.length, smallImageArray);
+        let index = 0;
+        for (const smallImage of smallImageArray) {
+            index += 1;
+            console.log('smallImage', smallImage);
+            const filename = `${index} - ${smallImage.getAttribute('alt') || 'image.jpg'}`;
+            console.log('Downloading small image:', filename);
+            downloadImageFromElement(smallImage, filename);
+        }
+        return;
+    }
+
+
+    fileset = new Set();
     const zip = new JSZip();
     zipfilename = titles + '.zip';
     console.log('zipfilename', zipfilename);
@@ -100,7 +157,11 @@ async function triggerDownload() {
         let errorFiles = 0;
         index = 0;
         updateProgressBar(completedFiles, totalFiles, errorFiles);
-        for (const href of hrefArray) {
+        for (let href of hrefArray) {
+            const urlObj = new URL(href);
+            urlObj.hostname = window.location.hostname;
+            const newHref = urlObj.toString();
+            href = newHref;
             if (fileset.has(href)) {
                 continue;
             }
@@ -202,6 +263,11 @@ function adddownloadwindow() {
     const downloadButton = document.createElement('button');
     downloadButton.textContent = 'start download Files';
     downloadButton.addEventListener('click', triggerDownload);
+    const checkbox = document.createElement('input');
+    console.log(checkbox);
+    checkbox.type = 'checkbox';
+    checkbox.id = 'smallimage';
+    checkbox.style.marginRight = '8px';
 
     // Append the button and progress bar to the document body or any other desired element
     const progressBar = document.createElement('div');
@@ -244,6 +310,7 @@ function adddownloadwindow() {
     floatWindow.style.zIndex = '9999';
 
     floatWindow.appendChild(downloadButton);
+    floatWindow.appendChild(checkbox);
     floatWindow.appendChild(progressBar);
     floatWindow.appendChild(errorTextArea);
  
