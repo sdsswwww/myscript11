@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://twkan.com/*
 // @grant       none
-// @version     1.5
+// @version     1.6
 // @author      -
 // @description 3/25/2025, 11:29:27 PM
 // @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/twkancleartext.js
@@ -20,7 +20,7 @@ function work() {
         const lines = contentDiv.innerHTML.split("<br>");
         const filteredLines = lines.filter(line => !z.some(word => line.includes(word)));
         contentDiv.innerHTML = filteredLines.join("<br>");
-        return true;
+        if (lines.length != filteredLines.length) return true;
     }
     return false;
 };
