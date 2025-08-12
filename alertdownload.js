@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         alert download
 // @namespace    http://tampermonkey.net/
-// @version      2025-08-09
+// @version      2025-08-12
 // @description  try to take over the world!
 // @author       You
 // @match        https://windfiles.com/*
@@ -15,9 +15,10 @@ function work() {
 
     // Your code here...
     // <input type="submit" value="Start Download Now">
-    const playSound = async () => {
+    const playSound = async (volume) => {
         const audio = new Audio('https://actions.google.com/sounds/v1/alarms/beep_short.ogg');
         for (let i = 0; i < 10; i++) {
+            audio.volume = volume !== undefined ? volume : 1.0;
             await audio.play();
             await new Promise(resolve => setTimeout(resolve, 100));
             audio.currentTime = 0;
@@ -28,8 +29,18 @@ function work() {
     if (input) {
         playSound();
     }
+    else {
+        // <h5 class="modal-title" id="slowDownTitle">Free Slow Download</h5>
+        const slowDownTitle = document.querySelector('h5.modal-title#slowDownTitle');
+        if (slowDownTitle) {
+            const silentAudio = new Audio('https://actions.google.com/sounds/v1/alarms/beep_short.ogg');
+            silentAudio.volume = 0.01;
+            silentAudio.play().catch(() => {});
+        }
+    }
+    
 }
 
 const intervalId = setInterval(() => {
     work();
-}, 5000); // Check every 5 seconds
+}, 3000); // Check every 5 seconds
