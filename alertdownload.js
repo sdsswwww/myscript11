@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         alert download
 // @namespace    http://tampermonkey.net/
-// @version      1.3
+// @version      1.4
 // @description  try to take over the world!
 // @author       You
 // @match        https://windfiles.com/*
@@ -26,7 +26,9 @@ function work() {
     };
 
     const input = document.querySelector('input[type="submit"][value="Start Download Now"]');
-    if (input) {
+    const input1 = document.querySelector('input[type="submit"][value="马上开始下载"]');
+    
+    if (input || input1) {
         playSound();
     }
     else {
@@ -38,7 +40,6 @@ function work() {
             silentAudio.play().catch(() => {});
         }
     }
-    
 }
 
 const intervalId = setInterval(() => {
