@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         alert download
 // @namespace    http://tampermonkey.net/
-// @version      2025-08-12
+// @version      1.3
 // @description  try to take over the world!
 // @author       You
 // @match        https://windfiles.com/*
