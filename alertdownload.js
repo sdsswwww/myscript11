@@ -6,7 +6,7 @@
 // @author       You
 // @match        https://windfiles.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=windfiles.com
-// @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/alertdownload.js
+// @updateURL    https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/alertdownload.js
 // @grant        none
 // ==/UserScript==
 
