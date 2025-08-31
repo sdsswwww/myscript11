@@ -4,7 +4,7 @@
 // @match       https://twkan.com/*
 // @match       https://cn.wa01.com/*
 // @grant       none
-// @version     1.9
+// @version     1.11
 // @author      -
 // @description 3/25/2025, 11:29:27 PM
 // @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/twkancleartext.js
@@ -16,7 +16,7 @@ let z = [ 'T Tκan', 'TTKAN', 'TWKAN',  'ᴛᴛᴋᴀɴ',  'ᴛ ᴛᴋᴀɴ',  '
 // normalize to lowercase, trim and remove duplicates
 z = Array.from(new Set(z.map(s =>  s.toLowerCase().trim() ).filter(Boolean)));
 
-let x = ['www⊕ ttκǎ n⊕ C 〇', 'Wшw .Tтkā n .C 〇']
+let x = ['www⊕ ttκǎ n⊕ C 〇', 'Wшw .Tтkā n .C 〇', 'Www✿тt kǎn✿CΟ', 'шшш＿TTKΛN＿co', 'Wшw ●тTkan ●￠ ○', 'ωωω ＿TтkΛ n ＿￠ O']
 console.log(z);
 
 function work() {

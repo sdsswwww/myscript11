@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ttkan next page
 // @namespace    http://tampermonkey.net/
-// @version      2025-08-31
+// @version      1.1
 // @description  try to take over the world!
 // @author       You
 // @match        https://cn.wa01.com/novel/pagea/*
@@ -55,7 +55,7 @@ function work() {
     nextA.title = '下一章';
     nextA.setAttribute('aria-label', '下一章');
     // use same marker as prev, then a readable label
-    nextA.innerHTML = '◈&nbsp;下一章';
+    nextA.innerHTML = '下一章';
 
     nextDiv.appendChild(nextA);
 
