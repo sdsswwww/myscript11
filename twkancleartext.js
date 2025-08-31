@@ -16,7 +16,7 @@ let z = [ 'T Tκan', 'TTKAN', 'TWKAN',  'ᴛᴛᴋᴀɴ',  'ᴛ ᴛᴋᴀɴ',  '
 // normalize to lowercase, trim and remove duplicates
 z = Array.from(new Set(z.map(s =>  s.toLowerCase().trim() ).filter(Boolean)));
 
-let x = ['www⊕ ttκǎ n⊕ C 〇']
+let x = ['www⊕ ttκǎ n⊕ C 〇', 'Wшw .Tтkā n .C 〇']
 console.log(z);
 
 function work() {
