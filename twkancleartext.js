@@ -16,6 +16,7 @@ let z = [ 'TTKAN', 'TWKAN',  'ᴛᴛᴋᴀɴ',  'ᴛᴡᴋᴀɴ',  '𝗍𝗍𝗄
 // normalize to lowercase, trim and remove duplicates
 z = Array.from(new Set(z.map(s =>  s.toLowerCase().trim() ).filter(Boolean)));
 console.log(z);
+
 function work() {
     console.log("twkancleartext.js is running");
     const contentDiv = document.getElementById("txtcontent");
