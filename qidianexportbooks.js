@@ -4,7 +4,7 @@
 // @version      2025-09-01
 // @description  Export book titles from Qidian
 // @author       You
-// @match        https://my.qidian.com/bookcase/
+// @match        https://my.qidian.com/bookcase/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=qidian.com
 // @grant        none
 // ==/UserScript==
