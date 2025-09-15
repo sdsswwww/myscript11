@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         alert download
 // @namespace    http://tampermonkey.net/
-// @version      1.4
+// @version      1.5
 // @description  try to take over the world!
 // @author       You
 // @match        https://windfiles.com/*
@@ -10,9 +10,11 @@
 // @grant        none
 // ==/UserScript==
 
+let clicked = false;
+let eventadded = false;
 function work() {
     'use strict';
-
+    if (clicked) return;
     // Your code here...
     // <input type="submit" value="Start Download Now">
     const playSound = async (volume) => {
@@ -27,8 +29,12 @@ function work() {
 
     const input = document.querySelector('input[type="submit"][value="Start Download Now"]');
     const input1 = document.querySelector('input[type="submit"][value="马上开始下载"]');
-    
-    if (input || input1) {
+    var ii = input || input1
+    if (ii) {
+        if (!eventadded) {
+            ii.addEventListener('click', () => { clicked = true; }, { once: true });
+            eventadded = true;
+        }
         playSound();
     }
     else {
