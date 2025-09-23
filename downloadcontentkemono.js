@@ -4,7 +4,7 @@
 // @match       https://kemono.su/*/post/*
 // @match       https://kemono.cr/*/post/*
 // @grant       none
-// @version     1.1
+// @version     1.2
 // @author      -
 // @description 2/7/2024, 2:11:23 AM
 // @require      https://cdn.jsdelivr.net/npm/jszip@3/dist/jszip.min.js
@@ -267,6 +267,9 @@ function adddownloadwindow() {
     console.log(checkbox);
     checkbox.type = 'checkbox';
     checkbox.id = 'smallimage';
+    const checkboxLabel = document.createElement('label');
+    checkboxLabel.htmlFor = 'smallimage';
+    checkboxLabel.textContent = 'Download small images only';
     checkbox.style.marginRight = '8px';
 
     // Append the button and progress bar to the document body or any other desired element
@@ -311,6 +314,7 @@ function adddownloadwindow() {
 
     floatWindow.appendChild(downloadButton);
     floatWindow.appendChild(checkbox);
+    floatWindow.appendChild(checkboxLabel);
     floatWindow.appendChild(progressBar);
     floatWindow.appendChild(errorTextArea);
  
