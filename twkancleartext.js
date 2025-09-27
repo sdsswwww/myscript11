@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://twkan.com/*
 // @grant       none
-// @version     1.14
+// @version     1.15
 // @author      -
 // @description 3/25/2025, 11:29:27 PM
 // @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/twkancleartext.js
@@ -37,11 +37,11 @@ function work() {
             const idx = plain.indexOf(pat);
             if (idx !== -1) {
                 console.log(`Removing pattern "${pat}" from line: ${line}`);
-                line = line.slice(0, idx) + '⭐' + line.slice(idx + pat.length);
+                line = plain.slice(0, idx) + '⭐' + plain.slice(idx + pat.length);
                 plain = line;
             }
         }
-        return z.some(word => plain.includes(word)) ? "⭐" : plain;
+        return z.some(word => plain.toLowerCase().includes(word)) ? "⭐" : plain;
     });
     // console.log(lines);
     // console.log(filteredLines);
