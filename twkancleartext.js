@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://twkan.com/*
 // @grant       none
-// @version     1.16
+// @version     1.17
 // @author      -
 // @description 3/25/2025, 11:29:27 PM
 // @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/twkancleartext.js
@@ -18,15 +18,15 @@ z = Array.from(new Set(z.map(s => s.toLowerCase().trim())));
 let x = ['𝓽𝔀𝓴𝓪𝓷', 'www⊕ ttκǎ n⊕ C 〇', 'Wшw .Tтkā n .C 〇', 'Www✿тt kǎn✿CΟ', 'шшш＿TTKΛN＿co', 'Wшw ●тTkan ●￠ ○', 'ωωω ＿TтkΛ n ＿￠ O']
 console.log(z);
 
-function workline(line) {
-    let plain = line;
+function workline(line0) {
+    let plain = line0;
     // replace any occurrence of any entry in x with a single space (case-insensitive)
     for (const pat of x) {
         const idx = plain.indexOf(pat);
         if (idx !== -1) {
-            console.log(`Removing pattern "${pat}" from line: ${line}`);
-            line = plain.slice(0, idx) + '⭐' + plain.slice(idx + pat.length);
-            plain = line;
+            console.log(`Removing pattern "${pat}" from line: ${plain}`);
+            let x = plain.slice(0, idx) + '⭐' + plain.slice(idx + pat.length);
+            plain = x;
         }
     }
     return z.some(word => plain.toLowerCase().includes(word)) ? "⭐" : plain;
