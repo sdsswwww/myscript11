@@ -26,10 +26,15 @@ function workline(line0) {
         if (idx !== -1) {
             console.log(`Removing pattern "${pat}" from line: ${plain}`);
             let x = plain.slice(0, idx) + '⭐' + plain.slice(idx + pat.length);
+            console.log(`Resulting line: ${x}`);
             plain = x;
         }
     }
-    return z.some(word => plain.toLowerCase().includes(word)) ? "⭐" : plain;
+    if (z.some(word => plain.toLowerCase().includes(word))) {
+        console.log(`Line contains filtered word, replacing with star: ${plain}`);
+        return "⭐";
+    }
+    return plain;
 }
 
 
