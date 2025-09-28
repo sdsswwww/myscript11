@@ -1,15 +1,19 @@
 // ==UserScript==
-// @name        general remove the extra parameter from the href attribute 
+// @name        general remove the extra parameter from the href attribute
 // @namespace   Violentmonkey Scripts
 // @match       *://sis001.com/*
 // @match       *://sexinsex.net/*
 // @match       *://laowang.vip/*
 // @match       *://chunman4.com/*
 // @match       *://*.a41415.com/*
+// @match       *://*.hjd2048.com/*
+// @match       *://*.sxsylt1.com/*
 // @grant       none
-// @version     1.0
+// @version     1.2
 // @author      -
 // @description 2/14/2024, 10:44:11 AM
+// @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/replacehrefgeneral.js
+// @downloadURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/replacehrefgeneral.js
 // ==/UserScript==
 
 console.log('work111')
@@ -26,12 +30,14 @@ function work()
             console.log(link.href)
             link.href = link.href.replace(/-\d+\.html/, '-1.html');
             console.log(link.href)
+            return;
         }
-
-        if (link.href.includes("viewthread.php?tid=") || link.href.includes("forum.php?mod=viewthread&tid=")) {
-
+        let z = ["viewthread.php?tid=", "forum.php?mod=viewthread&tid=", 'read.php?tid=']
+        if (z.some(word => link.href.includes(word))) {
             console.log(link.href)
             link.href = link.href.replace(/(\?|&)extra=[^&]+/, '');
+            //&fpage=2
+            link.href = link.href.replace(/(\?|&)fpage=[^&]+/, '');
             console.log(link.href)
         }
     });
