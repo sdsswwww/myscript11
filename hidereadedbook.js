@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         show or hide books
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  try to take over the world!
 // @author       You
 // @match        https://www.69shuba.com/modules/article/bookcase.php
@@ -14,12 +14,20 @@
 function showorhide(flag) {
     console.log('showorhide', flag)
     const matched = [];
+    const allbooks = [];
+
+
     document.querySelectorAll('li').forEach(li => {
         if (li.classList && li.classList.contains('col-8')) return;
         // find the first .zxzj that has child elements
         const zxCandidates = li.querySelectorAll('.zxzj');
+        
+
         const zx = Array.from(zxCandidates).find(el => el && el.childElementCount > 0);
         if (!zx) return;
+
+        let bookname = li.querySelector('span')?.textContent.trim() || '';
+        if (bookname) allbooks.push(bookname);
 
         const pElems = Array.from(zx.querySelectorAll('p'));
         let bookmarkAnchor = null;
@@ -55,6 +63,8 @@ function showorhide(flag) {
         li.style.display = flag ? '' : 'none';
     });
 
+    console.log('allbooks', allbooks.length, 'matched', matched.length);
+    console.log(allbooks);
     return matched;
 
     
