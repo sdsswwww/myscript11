@@ -8,8 +8,9 @@
 // @match       *://*.a41415.com/*
 // @match       *://*.hjd2048.com/*
 // @match       *://*.sxsylt1.com/*
+// @match       *://*.xsijishe.net/*
 // @grant       none
-// @version     1.2
+// @version     1.3
 // @author      -
 // @description 2/14/2024, 10:44:11 AM
 // @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/replacehrefgeneral.js
