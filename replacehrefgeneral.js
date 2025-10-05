@@ -10,7 +10,7 @@
 // @match       *://*.sxsylt1.com/*
 // @match       *://*.xsijishe.net/*
 // @grant       none
-// @version     1.3
+// @version     1.4
 // @author      -
 // @description 2/14/2024, 10:44:11 AM
 // @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/replacehrefgeneral.js
@@ -33,6 +33,20 @@ function work()
             console.log(link.href)
             return;
         }
+
+        if (location.hostname.includes('sis001.com')) {
+            // viewthread.php?tid=12304571
+            // thread-12304571-1-1.html
+            // Convert viewthread.php?tid=12304571 to thread-12304571-1-1.html
+            if (link.href.includes("viewthread.php?tid=")) {
+                console.log(link.href)
+                let tid = link.href.match(/viewthread.php\?tid=(\d+)/)[1];
+                link.href = `https://${location.hostname}/bbs/thread-${tid}-1-1.html`;
+                console.log(link.href)
+                return;
+            }
+        }
+
         let z = ["viewthread.php?tid=", "forum.php?mod=viewthread&tid=", 'read.php?tid=']
         if (z.some(word => link.href.includes(word))) {
             console.log(link.href)
