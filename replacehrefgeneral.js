@@ -10,7 +10,7 @@
 // @match       *://*.sxsylt1.com/*
 // @match       *://*.xsijishe.net/*
 // @grant       none
-// @version     1.4
+// @version     1.5
 // @author      -
 // @description 2/14/2024, 10:44:11 AM
 // @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/replacehrefgeneral.js
@@ -48,11 +48,13 @@ function work()
         }
 
         let z = ["viewthread.php?tid=", "forum.php?mod=viewthread&tid=", 'read.php?tid=']
+        let keys = ['extra', 'fpage']
         if (z.some(word => link.href.includes(word))) {
             console.log(link.href)
-            link.href = link.href.replace(/(\?|&)extra=[^&]+/, '');
-            //&fpage=2
-            link.href = link.href.replace(/(\?|&)fpage=[^&]+/, '');
+            for (let k of keys) {
+                link.href = link.href.replace(/(\?|&)" + k + "=[^&]+/, '');
+            }
+            
             console.log(link.href)
         }
     });
