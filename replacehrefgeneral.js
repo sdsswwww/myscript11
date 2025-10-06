@@ -50,12 +50,15 @@ function work()
         let z = ["viewthread.php?tid=", "forum.php?mod=viewthread&tid=", 'read.php?tid=']
         let keys = ['extra', 'fpage']
         if (z.some(word => link.href.includes(word))) {
-            console.log(link.href)
+            console.log('origin', link.href)
             for (let k of keys) {
-                link.href = link.href.replace(/(\?|&)" + k + "=[^&]+/, '');
+                let index = link.href.indexOf(`&${k}=`);
+                if (index !== -1) {
+                    link.href = link.href.substring(0, index);
+                }
             }
-            
-            console.log(link.href)
+
+            console.log('modified', link.href)
         }
     });
 }
