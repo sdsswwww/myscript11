@@ -23,14 +23,20 @@ function work()
 {
     console.log('work')
     const links = document.querySelectorAll('a');
+    let threadreg = new RegExp(/thread-(\d+)-(\d+)-(\d+)\.html/);
     links.forEach(link => {
         // Modify the href attribute here
-        // https://sis001.com/bbs/thread-11859395-1-1.html
-        if (link.href.includes("/bbs/thread-")) {
 
-            console.log(link.href)
-            link.href = link.href.replace(/-\d+\.html/, '-1.html');
-            console.log(link.href)
+            // thread-501559-1-2.html
+        if (threadreg.test(link.href)) {
+            console.log('origin', link.href)
+            let match = link.href.match(threadreg);
+            let tid = match[1];
+            let page = match[2];
+            let post = match[3];
+            link.href = link.href.replace(threadreg, `thread-${tid}-1-1.html`);
+
+            console.log('modified', link.href)
             return;
         }
 
