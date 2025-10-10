@@ -11,7 +11,7 @@
 // @match       https://learn.microsoft.com/*
 // @match       https://cn.wa01.com/*
 // @grant       none
-// @version     1.4
+// @version     1.5
 // @author      -
 // @description 6/12/2025, 1:02:12 AM
 // @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/shortkeys.js
@@ -55,11 +55,14 @@ const keyconfig = {
     "bookshelf": "z",
     "goback": "x",
     "goforward": "c",
+    "switchview": "v",
 }
 const bookmarkTexts = ["书签", "书籤", "書籤", "把最后一章加入书签", "把最后一章加入书籤", "把最后一章加入書籤", "收藏", "加入书签", "添加书签"];
 const previousChapterTexts = ["上一章", "上一页", "Previous"];
 const nextChapterTexts = ["下一章", "下一页", "Next"];
 const bookshelfTexts = ["书架", "我的书架", "我的收藏", "我的书签", "书签列表", "书架列表", "Check Your Answer", "Check your answers"];
+
+const switchViewTexts = ["隐藏已读", "显示已读"];
 
 
 // when user press keys,  do the actions,
@@ -112,6 +115,14 @@ document.addEventListener('keydown', function (event) {
             if (bookshelfLink) {
                 console.log("Bookshelf link found: " + bookshelfLink);
                 bookshelfLink.click();
+            }
+            break;
+        }
+        case keyconfig.switchview: {
+            const switchViewLink = getLinks(switchViewTexts);
+            if (switchViewLink) {
+                console.log("Switch view link found: " + switchViewLink);
+                switchViewLink.click();
             }
             break;
         }
