@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://twkan.com/*
 // @grant       none
-// @version     1.18
+// @version     1.20
 // @author      -
 // @description 3/25/2025, 11:29:27 PM
 // @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/twkancleartext.js
@@ -31,7 +31,7 @@ function workline(line0) {
         }
     }
     if (z.some(word => plain.toLowerCase().includes(word))) {
-        console.log(`Line contains filtered word, replacing with star: ${plain}`);
+        console.log(`Line contains filtered word, replacing all line with star: ${plain}`);
         return "⭐";
     }
     return plain;
@@ -40,16 +40,19 @@ function workline(line0) {
 
 function work() {
     console.log("twkancleartext.js is running");
-    const contentDiv = document.getElementById("txtcontent");
+    // <div id="txtcontent0">
+    const contentDiv =  document.querySelector('div#txtcontent');
     // <div class="content">
     // fallback: find the <div class="content">
     const contentEl = document.querySelector('div.content');
-    let target = contentDiv || contentEl;
+    const contentE2 = document.querySelector('div#txtcontent0');
 
+    let target = contentDiv || contentEl || contentE2;
+    console.log('found target:', target);
     if (!target) return false;
     const lines = target.innerHTML.split("<br>");
     //const filteredLines = lines.filter(line => !z.some(word => line.toLowerCase().includes(word)));
-    const filteredLines = lines.map(line => workline);
+    const filteredLines = lines.map(line => workline(line));
     // console.log(lines);
     // console.log(filteredLines);
     target.innerHTML = filteredLines.join("<br>");
