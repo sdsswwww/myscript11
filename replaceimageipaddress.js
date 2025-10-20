@@ -5,7 +5,7 @@
 // @match       https://sexinsex.net/forum/*
 // @match       https://sis001.com/forum/*
 // @grant       none
-// @version     1.0
+// @version     1.1
 // @author      -
 // @description 2/1/2025, 3:49:41 PM
 // @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/replaceimageipaddress.js
@@ -17,7 +17,7 @@ find all <img> elements with src attribute containing an IP address in the ip li
 replace the src attribute with the current domain name
 */
 
-let iplist = ['174.127.195.180', '174.127.195.168']
+let iplist = ['174.127.195.180', '174.127.195.168', '174.127.195.66']
 
 function work() {
     'use strict';
