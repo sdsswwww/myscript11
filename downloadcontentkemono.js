@@ -4,7 +4,7 @@
 // @match       https://kemono.su/*/post/*
 // @match       https://kemono.cr/*/post/*
 // @grant       none
-// @version     1.2
+// @version     1.3
 // @author      -
 // @description 2/7/2024, 2:11:23 AM
 // @require      https://cdn.jsdelivr.net/npm/jszip@3/dist/jszip.min.js
@@ -67,6 +67,7 @@ async function triggerDownload() {
     const postEdited = document.querySelectorAll('.post__edited');
     const postAdded = document.querySelectorAll('.post__added');
     const postContent = document.querySelectorAll('.post__content');
+    const postAuthor = document.querySelectorAll('.post__user-name');
 
     const paragraphs = Array.from(postContent).map(content => Array.from(content.getElementsByTagName('p')).map(p => p.textContent.trim()).join(' '));
 
@@ -76,14 +77,16 @@ async function triggerDownload() {
     console.log('Concatenated Text:', concatenatedText);
 
 
-    const titles = Array.from(postTitles).map(title => title.textContent.trim());
+    const title = Array.from(postTitles).map(title => title.textContent.trim())[0];
     const publishedDates = Array.from(postPublished).map(date => date.textContent.trim());
     const editedDates = Array.from(postEdited).map(date => date.textContent.trim());
     const addedDates = Array.from(postAdded).map(date => date.textContent.trim());
-    console.log('Titles:', titles);
+    const author = Array.from(postAuthor).map(author => author.textContent.trim())[0];
+    console.log('Title:', title);
     console.log('Published Dates:', publishedDates);
     console.log('Edited Dates:', editedDates);
     console.log('Added Dates:', addedDates);
+    console.log('Author:', author);
     console.log('concatenatedText', concatenatedText);
 
 
@@ -128,14 +131,16 @@ async function triggerDownload() {
 
     fileset = new Set();
     const zip = new JSZip();
-    zipfilename = titles + '.zip';
+    zippath = 'ke [' + author + '] ' + title + ' ' + hrefArray.length + 'p';
+    zipfilename = zippath +  '.zip';
     console.log('zipfilename', zipfilename);
 
     const currentPageURL = window.location.href;
     const currentDatetime = new Date().toLocaleString();
 
     const textContent = `
-    Titles: ${titles}
+    Title: ${title}
+    Author: ${author}
     Published Dates: ${publishedDates}
     Edited Dates: ${editedDates}
     Added Dates: ${addedDates}
@@ -145,7 +150,7 @@ async function triggerDownload() {
     ${concatenatedText}
     `;
 
-    zip.file('info.txt', textContent);
+    zip.file(zippath + '/info.txt', textContent);
     let errormsg = '';
     let downloadList = '';
 
@@ -177,7 +182,7 @@ async function triggerDownload() {
                     const response = await fetch(href);
                     const blob = await response.blob();
 
-                    zip.file(fileName, blob);
+                    zip.file(zippath + '/' + fileName, blob);
                     console.log('Blob Size (KB):', blob.size / 1024);
                     if (blob.size < 600) {
                         throw new Error('Downloaded file is too small (less than 600 bytes)');
@@ -211,7 +216,7 @@ async function triggerDownload() {
             updateProgressBar(completedFiles, totalFiles, errorFiles);
         }
 
-        zip.file('downloadList.txt', downloadList);
+        zip.file(zippath + '/downloadList.txt', downloadList);
     }
 
     await addFilesToZip();
