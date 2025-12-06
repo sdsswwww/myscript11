@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://twkan.com/*
 // @grant       none
-// @version     1.20
+// @version     1.21
 // @author      -
 // @description 3/25/2025, 11:29:27 PM
 // @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/twkancleartext.js
@@ -11,12 +11,12 @@
 
 
 
-let z = ['T Tκan', 'TTKAN', 'TWKAN', 'ᴛᴛᴋᴀɴ', 'ᴛ ᴛᴋᴀɴ', 'ᴛᴡᴋᴀɴ', '𝗍𝗍𝗄𝖺𝗇', '𝗍𝗐𝗄𝖺𝗇', '臺湾小説网', "𝕥𝕥𝕜𝕒𝕟", "𝕥𝕨𝕜𝕒𝕟", "最⊥新⊥小⊥说⊥"]
+let wholelinedetect = ['T Tκan', 'TTKAN', 'TWKAN', 'ᴛᴛᴋᴀɴ', 'ᴛ ᴛᴋᴀɴ', 'ᴛᴡᴋᴀɴ', '𝗍𝗍𝗄𝖺𝗇', '𝗍𝗐𝗄𝖺𝗇', '台湾小说网', '臺湾小説网', "𝕥𝕥𝕜𝕒𝕟", "𝕥𝕨𝕜𝕒𝕟", "最⊥新⊥小⊥说⊥"]
 // normalize to lowercase, trim and remove duplicates
-z = Array.from(new Set(z.map(s => s.toLowerCase().trim())));
+wholelinedetect = Array.from(new Set(wholelinedetect.map(s => s.toLowerCase().trim())));
 
 let x = ['𝓽𝔀𝓴𝓪𝓷', 'www⊕ ttκǎ n⊕ C 〇', 'Wшw .Tтkā n .C 〇', 'Www✿тt kǎn✿CΟ', 'шшш＿TTKΛN＿co', 'Wшw ●тTkan ●￠ ○', 'ωωω ＿TтkΛ n ＿￠ O']
-console.log(z);
+console.log(wholelinedetect);
 
 function workline(line0) {
     let plain = line0;
@@ -30,7 +30,7 @@ function workline(line0) {
             plain = x;
         }
     }
-    if (z.some(word => plain.toLowerCase().includes(word))) {
+    if (wholelinedetect.some(word => plain.toLowerCase().includes(word))) {
         console.log(`Line contains filtered word, replacing all line with star: ${plain}`);
         return "⭐";
     }
