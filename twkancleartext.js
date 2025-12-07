@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://twkan.com/*
 // @grant       none
-// @version     1.21
+// @version     1.22
 // @author      -
 // @description 3/25/2025, 11:29:27 PM
 // @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/twkancleartext.js
@@ -11,7 +11,7 @@
 
 
 
-let wholelinedetect = ['T Tκan', 'TTKAN', 'TWKAN', 'ᴛᴛᴋᴀɴ', 'ᴛ ᴛᴋᴀɴ', 'ᴛᴡᴋᴀɴ', '𝗍𝗍𝗄𝖺𝗇', '𝗍𝗐𝗄𝖺𝗇', '台湾小说网', '臺湾小説网', "𝕥𝕥𝕜𝕒𝕟", "𝕥𝕨𝕜𝕒𝕟", "最⊥新⊥小⊥说⊥"]
+let wholelinedetect = ['臺灣小説網','T Tκan', 'TTKAN', 'TWKAN', 'ᴛᴛᴋᴀɴ', 'ᴛ ᴛᴋᴀɴ', 'ᴛᴡᴋᴀɴ', '𝗍𝗍𝗄𝖺𝗇', '𝗍𝗐𝗄𝖺𝗇', '台湾小说网', '臺湾小説网', "𝕥𝕥𝕜𝕒𝕟", "𝕥𝕨𝕜𝕒𝕟", "最⊥新⊥小⊥说⊥"]
 // normalize to lowercase, trim and remove duplicates
 wholelinedetect = Array.from(new Set(wholelinedetect.map(s => s.toLowerCase().trim())));
 
