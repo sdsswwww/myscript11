@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://twkan.com/*
 // @grant       none
-// @version     1.22
+// @version     1.23
 // @author      -
 // @description 3/25/2025, 11:29:27 PM
 // @updateURL   https://raw.githubusercontent.com/sdsswwww/myscript11/refs/heads/main/twkancleartext.js
@@ -75,3 +75,14 @@ const intervalId = setInterval(() => {
 
     }
 }, 1000); // Check every 1 second
+
+
+const intervalId2 = setInterval(() => {
+    try {
+        var r = work();
+        console.log("slow gap work() returned:", r);
+    } catch (error) {
+        console.error("Error in work function:", error);
+
+    }
+}, 5000); // Check every 5 seconds
