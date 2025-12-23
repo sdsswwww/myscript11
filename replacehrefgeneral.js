@@ -10,6 +10,7 @@
 // @match       *://*.sxsylt1.com/*
 // @match       *://*.xsijishe.net/*
 // @match       *://*.sxsy97.com/*
+// @match       *://*.sxsy87.com/*
 // @grant       none
 // @version     1.6
 // @author      -
