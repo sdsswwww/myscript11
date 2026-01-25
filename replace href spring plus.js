@@ -4,7 +4,7 @@
 // @match       https://www.spring-plus.net/thread.php*
 // @match       https://www.south-plus.net/thread.php*
 // @grant       none
-// @version     1.0
+// @version     1.1
 // @author      -
 // @description 2/14/2024, 10:44:11 AM
 // ==/UserScript==
