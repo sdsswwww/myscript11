@@ -1,7 +1,8 @@
 // ==UserScript==
-// @name        remove the extra parameter from the href attribute spring plus
+// @name        replace href spring plus.js   remove the extra parameter from the href attribute spring plus
 // @namespace   Violentmonkey Scripts
 // @match       https://www.spring-plus.net/thread.php*
+// @match       https://www.south-plus.net/thread.php*
 // @grant       none
 // @version     1.0
 // @author      -
